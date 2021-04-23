@@ -1,18 +1,20 @@
 defmodule HelloNerves do
-  @moduledoc """
-  Documentation for HelloNerves.
-  """
+  def blink_lights() do
+    pins = [26, 19, 13]
+    leds = Enum.map(pins, fn pin ->
+      Circuits.GPIO.open(pin, :output) |> elem(1)
+    end)
+    Enum.each(leds, fn led -> blink(led) end)
+  end
 
-  @doc """
-  Hello world.
+  def blink(led) do
+    Circuits.GPIO.write(led, 1)
+    Process.sleep(2000)
+    Circuits.GPIO.write(led, 0)
+  end
 
-  ## Examples
-
-      iex> HelloNerves.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def close_pins() do
+    pins = [26, 19, 13]
+    Enum.map(pins, fn pin -> Circuits.GPIO.close(pin) end)
   end
 end
