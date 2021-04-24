@@ -10,7 +10,7 @@ defmodule HelloNerves.LEDAdapter.Test do
   def close(led) do
     Logger.info("Closing #{inspect(led)}")
   end
-
+  
   def on(led) do
     Logger.info("Turning #{inspect(led)} on")
     %{led | lit: true, history: [:on | led.history]}

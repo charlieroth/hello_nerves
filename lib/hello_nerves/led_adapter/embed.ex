@@ -9,7 +9,7 @@ defmodule HelloNerves.LEDAdapter.Embed do
   def close(led) do
     GPIO.close(led)
   end
-
+  
   def on(led) do
     GPIO.write(led, 1)
     led
@@ -23,4 +23,3 @@ defmodule HelloNerves.LEDAdapter.Embed do
   def toggle(led, true = _on), do: on(led)
   def toggle(led, false = _on), do: off(led)
 end
-
