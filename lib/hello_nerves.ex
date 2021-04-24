@@ -23,4 +23,8 @@ defmodule HelloNerves do
     pins = [26, 19, 13]
     Enum.map(pins, fn pin -> GPIO.close(pin) end)
   end
+
+  def hello() do
+    :world
+  end
 end
